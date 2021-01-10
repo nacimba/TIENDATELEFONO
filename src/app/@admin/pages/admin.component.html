@@ -1,4 +1,4 @@
-<h1>Admin es el componente madre con rutas de sus hijos de admin</h1>
+<!--<h1>Admin es el componente madre con rutas de sus hijos de admin</h1>
 
 <ul>
 
@@ -15,4 +15,33 @@
         </li>
         
     </ul>
-<router-outlet></router-outlet>
+-->
+
+<div class="d-flex" id="wrapper">
+<!--Corto lo del sidebar y lo pongo en los componentes creados para tal uso-->
+    <!-- Sidebar -->
+    <app-admin-sidebar *ngIf="toggledValue"></app-admin-sidebar>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <!--recogemos el evento del hijo -->
+      <app-admin-header (toggleChange)="toggled($event)"></app-admin-header>
+
+      <div class="container-fluid">
+        <app-admin-title></app-admin-title>
+        <!--el router-oulet lo teniamos al final acordarse de dejarlo aqui-->
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+<!-- ojo estos son los componentes como templates para la plantilla del bootstrar, cada componente se creo en @admin/core/componentes, hay que ir a cada .ts del componente y poner donde queramosssssssss :
+ app-admin-sidebar
+  app-admin-header
+  app-admin-title
+Asi referenciamosssss -->
+ 
