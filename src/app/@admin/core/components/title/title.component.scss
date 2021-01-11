@@ -1,1 +1,6 @@
 @import "./../../../pages/admin.component.scss"; /*ojo es el estilo del template ojooooooo oara que cuadre la plantilla*/
+h1 {
+    
+    color:$admin-primary-color;
+    font-size: larger !important;
+}
