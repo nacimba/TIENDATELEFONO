@@ -25,10 +25,11 @@ const routes: Routes = [
       import('./@admin/pages/users/users.module').then(m => m.UsersModule)
   },
 */
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+// el redirectTo lo dejamos vacio para en el public routin ponerloooo las redirecciones
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ,
   /*Siempre al final */
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 
 ];
 

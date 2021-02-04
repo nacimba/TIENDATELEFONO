@@ -10,7 +10,8 @@ component: PublicComponent,
 children: [
 
   {
-    path: 'home', loadChildren: () =>
+    /*dejamos el path vacio para que nos lleve al home*/
+    path: '', loadChildren: () =>
       import('./home/home.module').then(m => m.HomeModule)
   },
   {
