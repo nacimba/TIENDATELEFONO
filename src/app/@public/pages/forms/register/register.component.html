@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg"></div>
+    <div class="col-lg-6">
+      <!--añadimos el evento para enviar los datos del formulario add() tenemos que ponerlo en el componente-->
+      <!--añadimos la variable por template despues de
+    IRegisterForm del component y añadimos en la funcion add #forma="ngForm"
+  pero ojo esto ngForm seria para un valor  creando variables de entrada pues
+ ver donde esten las variables #name por ejemplo y listo y ojo con el ngModel-->
+      <form (ngSubmit)="add()" #forma="ngForm">
+        <h1>Registro de usuario</h1>
+        <p>
+          Rellena los datos del formulario para efectuar el registro de tu
+          cuenta de usuario.
+        </p>
+        <hr />
+        <label for="name"><b>Nombre</b></label>
+        <input type="text" 
+        placeholder="Introduzca su Nombre" 
+        name="name" 
+        #name="ngModel" 
+        [(ngModel)]="register.name"
+        class="form-control"
+        [ngClass]="{'is-valid': name.valid, 'is-invalid': name.invalid}"
+        required 
+        />
+        <!--Debajo de los imputs se añaden las alertas nos basamos en el login-->
+         <!-- ponemos las alerts-->
+         <div class="alert alert-danger" *ngIf="name.invalid &&(name.dirty || name.touched)">
+          <div *ngIf="name.errors.required ">
+            Introduzca un Nombre válido por favor
+            </div>
+        </div>
+        <label for="lastname"><b>Apellido/s</b></label>
+        <input type="text" 
+        placeholder="Introduzca su Apellido/S" 
+        name="lastname" 
+         #lastname="ngModel"
+         [(ngModel)]="register.lastname"
+         class="form-control"
+         [ngClass]="{'is-valid': lastname.valid, 'is-invalid': lastname.invalid}"
+          required
+           />
+
+            <!-- ponemos las alerts-->
+         <div class="alert alert-danger" *ngIf="lastname.invalid &&(lastname.dirty || lastname.touched)">
+          <div *ngIf="lastname.errors.required ">
+            Introduzca un Apellido o apellidos por favor
+            </div>
+        </div>
+        <label for="email"><b>Fecha de nacimiento</b></label>
+        <!--/*Para usar el widget necesitamos el selector del componente  de calendar -> date-picker etcccc y añadirlo al html del register*/-->
+        <!--ojo la función dataAsign la creamos en el component.ts del register-->
+        <!--como es un componente hijo la fecha de nacimiento el imput
+        la variable hay que tratarlo dentro de la función dataAsign
+      ver en register.component.ts -->
+        <app-date-picker-legal-age
+         (newDate)="dataAsign($event)"
+         ></app-date-picker-legal-age>
+<!-- Para implementar la variable del email nos vasamos en el email del login-->
+        <label for="email"><b>Email</b></label>
+        <input type="text"
+         placeholder="Introduzca su Email"
+        name="email" 
+         #email="ngModel"
+        [(ngModel)]="register.email"
+        pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        class="form-control"
+        [ngClass]="{'is-valid': email.valid, 'is-invalid': email.invalid}"
+          required />
+            <!-- ponemos las alerts-->
+            <div class="alert alert-danger" *ngIf="email.invalid &&(email.dirty || email.touched)">
+              <div *ngIf="email.errors.required ">
+                Introduzca un email valido por favor
+                </div>
+
+                <div *ngIf="email.errors.pattern ">
+                  Introduzca un email con el formato correcto  por favor. Pj: tiendita@loquesea.com
+                  </div>
+            </div>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" 
+        placeholder="Introduzca una contraseña"
+         name="password"
+           #password="ngModel"
+          [(ngModel)]="register.password"
+          class="form-control"
+          [ngClass]="{'is-valid': password.valid, 'is-invalid': password.invalid}"
+          required
+           />
+   <!-- ponemos las alerts-->
+           <div class="alert alert-danger" *ngIf="password.invalid &&(password.dirty || password.touched)">
+            <div *ngIf="password.errors.required ">
+              Introduzca una contraseña válida por favor
+              </div>
+          </div>
+        <p>
+          By creating an account you agree to our
+          <a href="#" style="color: dodgerblue;">Terms & Privacy</a>.
+        </p>
+        <p>
+          ¿Ya tiene una cuenta?
+          <a [routerLink]="['/login']" style="color: dodgerblue;">Iniciar sesión</a>.
+        </p>
+        <div class="row">
+          <div class="col-lg">
+            <!--preparamos el boton para que en funcion de 
+            lo que se escriba se active o desactive ver [disabled]="forma.invalid"-->
+            <button [disabled]="forma.invalid" type="submit" class="signup-btn">Registrarse</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg"></div>
+  </div>
+</div>

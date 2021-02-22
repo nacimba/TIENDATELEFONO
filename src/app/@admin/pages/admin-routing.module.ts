@@ -1,24 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { AdminGuard } from '@core/guards/admin.guard';
 
 const routes: Routes = [
-{
-  path: 'admin',
-component: AdminComponent,
-children: [
-
   {
-    path: '', loadChildren: () =>
-      import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
-  {
-    path: 'users', loadChildren: () =>
-      import('./users/users.module').then(m => m.UsersModule)
-  },
-]
+    path: 'admin',
+    component: AdminComponent,
+    /*ponemos la guarda ak children para protegerlo  y ponemos nombre de la guarda AdminGuard*/
+    canActivateChild: [AdminGuard],
+    children: [
 
-}
+      {
+        path: '', loadChildren: () =>
+          import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'users', loadChildren: () =>
+          import('./users/users.module').then(m => m.UsersModule)
+      },
+    ]
+
+  }
 ];
 
 @NgModule({

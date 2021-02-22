@@ -1,0 +1,15 @@
+<!--LA funcion selectDateChange se ejecutara cuando hacemos un cambio en la fecha-->
+<input 
+type="text" 
+ngbDatepicker 
+#d="ngbDatepicker"
+[(ngModel)]="model"  
+(click)="d.toggle()" 
+(ngModelChange)="selectDateChange()"
+[minDate]="minDate"
+[maxDate]="maxDate"
+readonly             
+/>
+<!-- quitamosssss ojito
+{{ model | json }}
+-->
