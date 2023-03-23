@@ -29,7 +29,7 @@ export class GraphqlModule {
     }
    });
 /*uri sera cuando estemos con el httplink y conectara entre api y lo nuestro*/
-   const uri = 'http://localhost:2005/graphql';
+   const uri = 'http://localhost:3000/graphql';
    const link = ApolloLink.from(
      [
        errorLink,
