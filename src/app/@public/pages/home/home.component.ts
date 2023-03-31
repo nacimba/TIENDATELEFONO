@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   /*insertamos la propiedad del servicio de la apiiiiii ojote carnal */
   constructor(private usersApi: UsersService, private auth: AuthService) {}
   ngOnInit(): void {
-    this.auth.login('eljhonys@gmail.com', '1234').subscribe(result => {
+    this.usersApi.getUsers(2, 1).subscribe(result => {
       console.log(result);
     });
    /* de momento comentamos ya que no nos hace falta despues siii ojo

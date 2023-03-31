@@ -1,5 +1,6 @@
 import { USER_FRAGMENT } from '@graphql/operations/fragment/user';
 import gql from 'graphql-tag';
+import { RESULT_INFO_FRAGMENT } from '@graphql/operations/fragment/result-info';
 
 export const LOGIN_QUERY = gql`
 query getlLogin($email: String!, $password: String!, $include: Boolean!){
@@ -16,9 +17,12 @@ query getlLogin($email: String!, $password: String!, $include: Boolean!){
 ${ USER_FRAGMENT }
 `;
 /* Se corresponde a la lista de usuarios ojo acordarse del fragment que es un objeto y lo tenemos que incluir lo definiremos en api.ser...*/
-export const USER_LIST_QUERY = gql`
-query userList($include: Boolean!){
-  users {
+export const USERS_LIST_QUERY = gql`
+query userList($include: Boolean!, $page: Int, $itemsPage: Int){
+  users (page: $page, itemsPage: $itemsPage) {
+    info{
+      ...ResultInfoObject
+    }
     status
     message
     users {
@@ -28,6 +32,7 @@ query userList($include: Boolean!){
 }
 
 ${ USER_FRAGMENT }
+${ RESULT_INFO_FRAGMENT }
 `;
 
 /*ojo el USER_FRAGMENT ES EL FRAGMENTO ENTERO DEL USUARIO */

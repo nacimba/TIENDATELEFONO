@@ -1,4 +1,4 @@
-import { LOGIN_QUERY, USER_LIST_QUERY, ME_DATA_QUERY } from '@graphql/operations/query/user';
+import { LOGIN_QUERY, USERS_LIST_QUERY, ME_DATA_QUERY } from '@graphql/operations/query/user';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/operators';
