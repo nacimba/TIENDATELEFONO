@@ -1,10 +1,11 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { DocumentNode } from 'graphql';
 import { TablePaginationService } from './table-pagination.service';
 import { IResultData, IInfoPage } from '@core/interfaces/result-data.interface'; 
 import { Observable } from 'rxjs/internal/observable';
 import { map } from 'rxjs/internal/operators/map';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
+
 
 @Component({
   /*tengo que pillar el selector del component y la clase del module y llamarlos desde los usuarios en @admin pafes -> users en el html pillar el selector */
@@ -13,12 +14,15 @@ import { ITableColumns } from '@core/interfaces/table-columns.interface';
   styleUrls: ['./table-pagination.component.scss']
 })
 export class TablePaginationComponent implements OnInit {
+  /*valores de entrada */
 @Input() query: DocumentNode;
 @Input() context: object;
 @Input() itemsPage = 20;
 @Input() include = true;
 @Input() resultData: IResultData;
 @Input() tableColumns: Array<ITableColumns> = undefined;
+/*valores de salida al backend */
+@Output() manageItem= new EventEmitter<Array<any>>();
 infoPage: IInfoPage;
 data$:  Observable<any>;
   constructor(private service: TablePaginationService) { }
@@ -68,4 +72,9 @@ data$:  Observable<any>;
     this.loadData();
   }
 
+  manageAction(action: string, data: any) {
+    console.log(action, data);
+    this.manageItem.emit([action, data]);
+
+  }
 }

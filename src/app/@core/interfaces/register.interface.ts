@@ -1,11 +1,13 @@
 import { IUser } from './user.interface';
-/* 1 almacenamos la interface para almacenar los datos del registro */
+
 export interface IRegisterForm{
     name: string;
     lastname: string;
     email: string;
     password: string;
     birthday: string;
+    role?: string;
+    active?: boolean;
 }
 
 /* 2 añadiremos el modulo de formularios  con angularforms FormsModule

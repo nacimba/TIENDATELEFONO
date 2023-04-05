@@ -64,10 +64,10 @@
         name="email" 
          #email="ngModel"
         [(ngModel)]="register.email"
-        pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
         class="form-control"
         [ngClass]="{'is-valid': email.valid, 'is-invalid': email.invalid}"
-          required />
+        [pattern]="emailPattern" 
+        required />
             <!-- ponemos las alerts-->
             <div class="alert alert-danger" *ngIf="email.invalid &&(email.dirty || email.touched)">
               <div *ngIf="email.errors.required ">

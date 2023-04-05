@@ -1,4 +1,4 @@
-
+<!-- el manafeItem es de los outputs que van al backend takeAction($event) crearlo en genres component-->
 <app-table-pagination
    [query]="query"
     [context]="context"
@@ -6,4 +6,6 @@
     [resultData]="resultData"
     [include]="include"
     [tableColumns]="columns"
+    
+    (manageItem)="takeAction($event)"
 ></app-table-pagination>

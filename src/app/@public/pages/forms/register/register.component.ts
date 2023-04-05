@@ -4,6 +4,7 @@ import { UsersService } from '@core/services/users.service';
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { IRegisterForm, IResultRegister } from '@core/interfaces/register.interface';
 import { Router } from '@angular/router';
+import { EMAIL_PATTERN } from '@core/constants/regex';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   /*En el register aqui es donde añadiremos la interface IRegisterForm */
   /*ojo todos los datos de la interface son obligatorios */
+  emailPattern = EMAIL_PATTERN;
   register: IRegisterForm = {
     name: '',
     lastname: '',
