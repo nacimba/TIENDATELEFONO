@@ -2,9 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { DocumentNode } from 'graphql';
 import { TablePaginationService } from './table-pagination.service';
 import { IResultData, IInfoPage } from '@core/interfaces/result-data.interface'; 
-import { Observable } from 'rxjs/internal/observable';
 import { map } from 'rxjs/internal/operators/map';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
+import { ACTIVE_FILTERS } from '@core/constants/filters';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TablePaginationComponent implements OnInit {
 @Input() include = true;
 @Input() resultData: IResultData;
 @Input() tableColumns: Array<ITableColumns> = undefined;
+@Input() filterActiveValues: ACTIVE_FILTERS = ACTIVE_FILTERS.ACTIVE;
 /*valores de salida al backend */
 @Output() manageItem= new EventEmitter<Array<any>>();
 infoPage: IInfoPage;
@@ -28,6 +30,7 @@ data$:  Observable<any>;
   constructor(private service: TablePaginationService) { }
 
   ngOnInit(): void {
+    
     if (this.query === undefined){
       throw new Error('Query is undefined, please add ');
       
@@ -54,7 +57,8 @@ data$:  Observable<any>;
     const variables = {
       page: this.infoPage.page,
       itemsPage: this.infoPage.itemsPage,
-      include: this.include
+      include: this.include,
+      active: this.filterActiveValues
     };
     this.data$ = this.service.getCollectionData(this.query, variables, {}).pipe(
       map((result: any) => {

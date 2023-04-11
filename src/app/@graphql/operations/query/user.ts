@@ -18,8 +18,8 @@ ${ USER_FRAGMENT }
 `;
 /* Se corresponde a la lista de usuarios ojo acordarse del fragment que es un objeto y lo tenemos que incluir lo definiremos en api.ser...*/
 export const USERS_LIST_QUERY = gql`
-query userList($include: Boolean!, $page: Int, $itemsPage: Int){
-  users (page: $page, itemsPage: $itemsPage) {
+query usersList($include: Boolean!, $page: Int, $itemsPage: Int, $active: ActiveFilterEnum){
+  users(page: $page, itemsPage: $itemsPage, active: $active) {
     info{
       ...ResultInfoObject
     }

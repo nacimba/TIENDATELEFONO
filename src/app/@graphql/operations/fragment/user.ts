@@ -10,5 +10,6 @@ email
 registerDate @include(if: $include)
 birthday @include(if: $include)
 role
+active
 }
 `;
