@@ -113,15 +113,15 @@ export class UsersComponent implements OnInit {
           <i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;${user.email}`,
           (user.active !== false ) ? 375:400 ,
           '<i class="fas fa-edit"></i>Editar',    // true
-          (user.active !== false ) ? 
-          '<i class="fas fa-lock"></i>Bloquear' :
-          '<i class="fas fa-lock-open"></i>Desbloquear'
+          (user.active !== false ) 
+          ? '<i class="fas fa-lock"></i>Bloquear' 
+          : '<i class="fas fa-lock-open"></i>Desbloquear'
           
         ); //false
         if (result) {//si el resultado es falso queremos bloquear
           this.updateForm(html, user);
         } else if (result === false) {
-          this.unblockForm(user, false)
+          this.unblockForm(user, (user.active !== false) ? false : true);
         }
         break;
 
