@@ -1,11 +1,16 @@
-<div class="container">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Sapien pellentesque habitant morbi tristique. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Enim nulla aliquet porttitor lacus luctus accumsan tortor posuere ac. Nunc mattis enim ut tellus elementum sagittis vitae. Justo nec ultrices dui sapien eget mi proin sed. Ac ut consequat semper viverra. Praesent semper feugiat nibh sed pulvinar proin gravida. Sagittis purus sit amet volutpat consequat mauris nunc. In est ante in nibh mauris. Odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Sit amet nulla facilisi morbi tempus iaculis urna.
+<shop-carousel-items [items]="items"></shop-carousel-items>
+<!--Cada section es una lista de la portada pilas-->
+<app-product-category-list *ngIf="listOne"
+[title]="'Juegos más existosos'"
+[productsList]="listOne">
+</app-product-category-list>
 
-Orci phasellus egestas tellus rutrum tellus pellentesque. Sagittis eu volutpat odio facilisis mauris sit. Eget mi proin sed libero enim sed. Cursus vitae congue mauris rhoncus aenean vel elit. Etiam sit amet nisl purus in mollis nunc sed. Aenean et tortor at risus viverra. Molestie nunc non blandit massa enim nec. Nulla facilisi cras fermentum odio eu feugiat pretium nibh. Potenti nullam ac tortor vitae. Sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Ullamcorper malesuada proin libero nunc. Id nibh tortor id aliquet. Adipiscing elit pellentesque habitant morbi tristique senectus et. Morbi tristique senectus et netus. Nulla pellentesque dignissim enim sit amet venenatis urna. Eu ultrices vitae auctor eu augue ut lectus. Metus dictum at tempor commodo. Quam pellentesque nec nam aliquam sem et tortor consequat.
+<app-product-category-list *ngIf="listTwo"
+[title]="'Juegos más económicos menos de 40€'"
+[productsList]="listTwo">
+</app-product-category-list>
 
-Penatibus et magnis dis parturient. Nibh nisl condimentum id venenatis a condimentum. Imperdiet sed euismod nisi porta. Laoreet id donec ultrices tincidunt arcu non. Pharetra vel turpis nunc eget. Adipiscing vitae proin sagittis nisl rhoncus. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim. Praesent tristique magna sit amet. Enim praesent elementum facilisis leo. Magna eget est lorem ipsum. Nisl tincidunt eget nullam non nisi est sit amet. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Libero justo laoreet sit amet cursus sit amet dictum. Diam sollicitudin tempor id eu nisl nunc mi.
-
-Vehicula ipsum a arcu cursus. Sapien nec sagittis aliquam malesuada. Felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Commodo elit at imperdiet dui accumsan. Risus quis varius quam quisque id diam vel. Est placerat in egestas erat imperdiet sed. Leo in vitae turpis massa sed elementum tempus egestas sed. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Scelerisque in dictum non consectetur a erat nam. Faucibus turpis in eu mi bibendum neque. Id neque aliquam vestibulum morbi blandit.
-
-is massa tincidunt dui ut ornare. Tortor at auctor urna nunc id cursus metus aliquam. Cras sed felis eget velit aliquet sagittis id consectetur purus. Quis blandit turpis cursus in hac habitasse platea dictumst. Elit eget gravida cum sociis natoque penatibus et magnis dis. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. At erat pellentesque adipiscing commodo elit. Fermentum dui faucibus in ornare quam viverra orci sagittis. At volutpat diam ut venenatis tellus in metus vulputate. Feugiat scelerisque varius morbi enim nunc faucibus a. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Ultricies leo integer malesuada nunc vel. Diam ut venenatis tellus in metus. Egestas sed sed risus pretium quam vulputate. Amet risus nullam eget felis eget.
-</div>
+<app-product-category-list *ngIf="listThree"
+[title]="'Juegos PC'"
+[productsList]="listThree">
+</app-product-category-list>
