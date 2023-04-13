@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { SHOP_PRODUCT_FRAGMENT } from '@graphql/operations/fragment/shop-product';
+import { RESULT_INFO_FRAGMENT } from '../fragment/result-info';
 
 
 export const SHOP_LAST_UNITS_OFFERS = gql`
@@ -10,6 +11,8 @@ query productoPorOfertaYstock(
     $random: Boolean
     $topPrice: Float
     $lastUnits: Int
+    $showInfo: Boolean = false
+    $showPlatform: Boolean = false
   ){
     shopProductsOffersLast(
       page: $page
@@ -20,7 +23,9 @@ query productoPorOfertaYstock(
       random: $random
     )
     {
-      
+      info @include(if: $showInfo){
+        ...ResultInfoObject
+      }
       status
       message
       shopProducts{
@@ -30,6 +35,7 @@ query productoPorOfertaYstock(
  }
 
  ${SHOP_PRODUCT_FRAGMENT}
+ ${RESULT_INFO_FRAGMENT}
 `;
 
 export const SHOP_PRODUCT_BY_PLATFORM = gql`
@@ -38,7 +44,9 @@ query productoPorPlataforma(
     $itemsPage: Int 
     $active: ActiveFilterEnum
     $random: Boolean
-    $platform: ID!
+    $platform: [ID!]!
+    $showInfo: Boolean = false
+    $showPlatform: Boolean = false
   ){
     shopProductsPlatforms(
       page: $page
@@ -48,6 +56,9 @@ query productoPorPlataforma(
       random: $random
     )
     {
+      info @include(if: $showInfo){
+        ...ResultInfoObject
+      }
       status
       message
       shopProducts{
@@ -57,4 +68,5 @@ query productoPorPlataforma(
   }
 
   ${SHOP_PRODUCT_FRAGMENT}
+  ${RESULT_INFO_FRAGMENT}
 `;

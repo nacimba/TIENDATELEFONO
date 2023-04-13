@@ -81,8 +81,9 @@ style="width: auto"
     
 		[collectionSize]="infoPage.total"
 		[(page)]="infoPage.page"
-    (pageChange)="pageChange()"
+    (pageChange)="changePage()"
 		[pageSize]="infoPage.itemsPage"
+    [maxSize]="15"
 		
 	>
 	</ngb-pagination>

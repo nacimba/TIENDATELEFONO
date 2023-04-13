@@ -15,13 +15,18 @@ children: [
       import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'about', loadChildren: () =>
-      import('./about/about.module').then(m => m.AboutModule)
+    path: 'games/:type/:filter', loadChildren: () =>
+      import('./games/games.module').then(m => m.GamesModule)
   },
   {
     path: 'contact', loadChildren: () =>
       import('./contact/contact.module').then(m => m.ContactModule)
   },
+  {
+    path: 'about', loadChildren: () =>
+      import('./about/about.module').then(m => m.AboutModule)
+  },
+  
   {
     path: 'login',
      loadChildren: () =>  import('./forms/login/login.module').then(m => m.LoginModule)
@@ -42,6 +47,7 @@ children: [
     path: 'reset/:token',
     loadChildren: () => import('./forms/change-password/change-password.module').then(m => m.ChangePasswordModule)
   },
+  
  ]
  }
 ];

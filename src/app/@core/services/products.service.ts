@@ -21,7 +21,9 @@ export class ProductsService extends ApiService {
     itemsPage: number = 10,
     active: ACTIVE_FILTERS = ACTIVE_FILTERS.ACTIVE,
     random: boolean = false,
-    platform: string
+    platform: Array<string> = ['-1'],
+    showInfo: boolean = false,
+    showPlatform: boolean = false,
   ) { 
     return this.get(
       SHOP_PRODUCT_BY_PLATFORM,
@@ -30,10 +32,18 @@ export class ProductsService extends ApiService {
         itemsPage,
         active,
         random,
-        platform
+        platform,
+        showInfo,
+        showPlatform
       }
     ). pipe(map((result: any) => {
-      return this.manageInfo(result.shopProductsPlatforms.shopProducts);
+      const data = result.shopProductsPlatforms
+ 
+      return {
+        info: data.info,
+        result: this.manageInfo(data.shopProducts)
+
+      } ;
     }));
   }
 
@@ -43,7 +53,9 @@ export class ProductsService extends ApiService {
     active: ACTIVE_FILTERS = ACTIVE_FILTERS.ACTIVE,
     random: boolean = false,
     topPrice: number = -1,
-    lastUnits: number = -1
+    lastUnits: number = -1,
+    showInfo: boolean = false,
+    showPlatform: boolean = false
   ) {
 
     return this.get(
@@ -55,11 +67,18 @@ export class ProductsService extends ApiService {
         random,
         topPrice,
         lastUnits,
+        showInfo,
+        showPlatform
       }
 
     ). pipe(map((result: any) => {
+      const data = result.shopProductsOffersLast
  
-      return this.manageInfo(result.shopProductsOffersLast.shopProducts);
+      return {
+        info: data.info,
+        result: this.manageInfo(data.shopProducts)
+
+      } ;
     }));
 
   }
@@ -72,7 +91,7 @@ export class ProductsService extends ApiService {
         img: shopObject.product.img,
         name: shopObject.product.name,
         rating: shopObject.product.rating,
-        description: '',
+        description:(shopObject.platform) ? shopObject.platform.name : '',
         qty: 1,
         price: shopObject.price,
         stock: shopObject.stock 

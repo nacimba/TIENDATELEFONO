@@ -71,7 +71,7 @@ data$:  Observable<any>;
     
   }
 
-  pageChange() {
+  changePage() {
  console.log(this.infoPage.page);
     this.loadData();
   }

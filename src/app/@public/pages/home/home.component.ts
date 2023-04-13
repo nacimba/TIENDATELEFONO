@@ -23,32 +23,32 @@ export class HomeComponent implements OnInit {
       //1 es de la pagina el 4 es del numero de elementos
       1, 4, ACTIVE_FILTERS.ACTIVE,
       // el valor 35 es el stock que solo hay 35
-      true, 40, 35).subscribe(result =>{
-        console.log('productos a menos de 40');
-        this.listTwo = result;
+      true, 35, -1, false, true).subscribe(data =>{
+        console.log('productos a menos de 40', data.result);
+        this.listTwo = data.result;
       });
  //this.listOne = this.fakeRandomProductList();
     this.products.getByPlatform(
       1, 4, ACTIVE_FILTERS.ACTIVE,
-      true, '18'
-    ).subscribe(result =>{
-      console.log('productos playstation4', result);
-      this.listOne = result;
+      true, ["18"]
+    ).subscribe(data =>{
+      console.log('productos playstation4', data.result);
+      this.listOne = data.result;
     });
    // lisTree es estatica ojooooooooooooooooo  this.listThree = this.fakeRandomProductList();
    this.products.getByPlatform(
     1, 4, ACTIVE_FILTERS.ACTIVE,
-    true, '4'
-  ).subscribe(result =>{
-    console.log('productos PC', result);
-    this.listThree = result;
+    true, ["4"]
+  ).subscribe(data =>{
+    console.log('productos PC', data.result);
+    this.listThree = data.result;
   });
 
 
 //CARROUSEL pagina 1,  6 elementos, ACTIVE_FILTERS.ACTIVE activos, true(el true es para que varie los elementos) si pongo false apareceran los mismos elementos, precio tope -1 no le vamos hacer caso, y ultimas unidades 20
 this.products.getByLastUnitsOffers(
-  1, 6, ACTIVE_FILTERS.ACTIVE, true, -1, 20).subscribe((result: IProduct[]) => { 
-    result.map((item: IProduct) => {
+  1, 6, ACTIVE_FILTERS.ACTIVE, true, -1, 20).subscribe((data) => { 
+    data.result.map((item: IProduct) => {
 
       this.items.push({
         id: item.id,

@@ -8,7 +8,7 @@
             *ngFor="let p of productsList"
              style="margin-bottom: 12px;">
         <shop-product-item 
-        [showDesc]="false" 
+        [showDesc]="p.description != ''" 
         [product]="p" 
         (add)="addToCart($event)"
         (itemDetails)="showProductDetails($event)"></shop-product-item>
