@@ -100,6 +100,22 @@ export async function optionsWithDetails(
             return false;
         }
     });
-
-
 }
+
+//opcional para la carga ojito
+export const loadData = (title: string, html: string) => {
+
+    Swal.fire({
+      title,
+      html,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      
+      },
+      });
+};
+
+export const closeAlert =() =>{
+Swal.close();
+
+};

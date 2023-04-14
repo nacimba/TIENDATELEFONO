@@ -1,16 +1,13 @@
-<shop-carousel-items [items]="items"></shop-carousel-items>
-<!--Cada section es una lista de la portada pilas-->
-<app-product-category-list *ngIf="listOne"
-[title]="'Juegos PS4'"
-[productsList]="listOne">
-</app-product-category-list>
+<!--carga opcionalllllllllllll ==============================>>>>>><div class="container-fluid" *ngIf="!loading"> -->
+    <shop-carousel-items [items]="items"></shop-carousel-items>
+    <!--Cada section es una lista de la portada pilas-->
+    <app-product-category-list *ngIf="listOne" [title]="'Juegos PS4'" [productsList]="listOne">
+    </app-product-category-list>
 
-<app-product-category-list *ngIf="listTwo"
-[title]="'Juegos más económicos menos de 40€'"
-[productsList]="listTwo">
-</app-product-category-list>
+    <app-product-category-list *ngIf="listTwo" [title]="'Juegos más económicos menos de 40€'" [productsList]="listTwo">
+    </app-product-category-list>
 
-<app-product-category-list *ngIf="listThree"
-[title]="'Juegos PC'"
-[productsList]="listThree">
-</app-product-category-list>
+    <app-product-category-list *ngIf="listThree" [title]="'Juegos PC'" [productsList]="listThree">
+    </app-product-category-list>
+
+<!--carga opcionalllllllllllll ==============================>>>>>></div>-->

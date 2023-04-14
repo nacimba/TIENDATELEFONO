@@ -1,4 +1,8 @@
-<div class="container-fluid">
+<!--ojo para la carga el aviso al abrir las pag de videojuegos si no 
+queremos ver el aviso quitar el * ngIf="infoPage && !loading
+del container-fluid dejarlo sin el *ngIf .... pilas 
+ver el games.component.html y quitar lo relacionado al aviso--> 
+<div class="container-fluid" *ngIf="infoPage && !loading">
     <app-product-category-list
     [title]="gamesPageInfo.title"
     [productsList]="productsList"

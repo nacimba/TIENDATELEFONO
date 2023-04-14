@@ -6,6 +6,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { ITableColumns } from '@core/interfaces/table-columns.interface';
 import { ACTIVE_FILTERS } from '@core/constants/filters';
 import { Observable } from 'rxjs/internal/Observable';
+import { closeAlert, loadData } from '@shared/alerts/alerts';
 
 
 @Component({
@@ -27,6 +28,9 @@ export class TablePaginationComponent implements OnInit {
 @Output() manageItem= new EventEmitter<Array<any>>();
 infoPage: IInfoPage;
 data$:  Observable<any>;
+// 1* para el aviso de carga
+//loading: boolean;
+// 2* fin de avisdo de carga ver abajo
   constructor(private service: TablePaginationService) { }
 
   ngOnInit(): void {
@@ -54,6 +58,10 @@ data$:  Observable<any>;
 
   /*PARA CARGAR LOS DATOS */
   loadData(){
+    // 3* para aviso de carga
+    //this.loading = true;
+    //loadData('Cargando...','Espera');
+    // 4* fin para el aviso de carga
     const variables = {
       page: this.infoPage.page,
       itemsPage: this.infoPage.itemsPage,
@@ -65,6 +73,10 @@ data$:  Observable<any>;
         const data = result[this.resultData.definitionKey];
         this.infoPage.pages = data.info.pages;
         this.infoPage.total = data.info.total;
+        // 5* para el aviso de carga
+        //this.loading = false;
+        //closeAlert
+        // 6* fin para el aviso de carga
         return result[this.resultData.definitionKey] [this.resultData.listKey];
       }
     ));

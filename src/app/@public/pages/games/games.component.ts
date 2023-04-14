@@ -7,6 +7,7 @@ import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
 import { subscribe } from 'graphql';
 import { IGamePageInfo } from './games-page-info.interface';
 import { GAMES_PAGES_INFO, TYPE_OPERATION } from './game.constants';
+import { closeAlert, loadData } from '@shared/alerts/alerts';
 
 @Component({
   selector: 'app-games',
@@ -24,10 +25,19 @@ export class GamesComponent implements OnInit {
   typeData: TYPE_OPERATION;
   gamesPageInfo: IGamePageInfo;
   productsList: Array<IProduct> =[];
+  // 1* para alerta de carga
+  loading: boolean;
+  // 2* fin parametro para alerta de carga
+
   constructor(private products: ProductsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params =>{
+
+    this.activatedRoute.params.subscribe((params) =>{
+      // 3* para alerta de carga
+   this.loading = true;
+   loadData('Cargando datos', 'Espera');
+// 4* fin para alerta de carga ver abajo private asignResult ese es el fin de alerta total de juego
       console.log(params);
       const keyPage = `${params.type}/${params.filter}`;
       this.gamesPageInfo = GAMES_PAGES_INFO[keyPage]
@@ -67,6 +77,10 @@ export class GamesComponent implements OnInit {
     console.log(this.gamesPageInfo.title, data.result);
         this.productsList = data.result;
         this.infoPage =data.info;
+// 5* para la alerta de carga 
+        closeAlert();
+        this.loading = false;
+// 6* fin para alerta de carga ojo alerta es lo que sale cargandooo
   }
 
 }

@@ -2,6 +2,7 @@ import { IProduct } from '@mugan86/ng-shop-ui/lib/interfaces/product.interface';
 import { ICarouselItem } from '@mugan86/ng-shop-ui/lib/interfaces/carousel-item.interface';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '@core/services/products.service';
+import { loadData,closeAlert } from '@shared/alerts/alerts';
 
 
 @Component({
@@ -14,9 +15,13 @@ export class HomeComponent implements OnInit {
     listOne;
     listTwo;
     listThree;
+    // carga opcionalllllllllllll ==============================>>>>>>loading;
   /*insertamos la propiedad del servicio de la apiiiiii ojote carnal */
   constructor(private products: ProductsService) { }
   ngOnInit(): void {
+    //carga opcionalllllllllllll ==============================>>>>>>this.loading = true;
+    //carga opcionalllllllllllll ==============================>>>>>>loadData('Cargando datos', 'Espera');
+         
     // esto es lo que sale en la pag principal
     this.products.getHomePage().subscribe(data => {
       console.log(data);
@@ -24,6 +29,8 @@ export class HomeComponent implements OnInit {
       this.listTwo = data.topPrice;
       this.listThree = data.pc;
       this.items = this.manageCarousel(data.carousel);
+     //carga opcionalllllllllllll ==============================>>>>>> closeAlert();
+     //carga opcionalllllllllllll ==============================>>>>>> this.loading = false;
     });
 
   }
