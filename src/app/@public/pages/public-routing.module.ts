@@ -15,6 +15,10 @@ children: [
       import('./home/home.module').then(m => m.HomeModule)
   },
   {
+    path: 'games/details/:id', loadChildren: () =>
+      import('./games/details/details.module').then(m => m.DetailsModule)
+  },
+  {
     path: 'games/:type/:filter', loadChildren: () =>
       import('./games/games.module').then(m => m.GamesModule)
   },
