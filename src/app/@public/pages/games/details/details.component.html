@@ -4,16 +4,18 @@
 <div class="container" *ngIf="product && !loading">
   
     <!-- Portfolio Item Row -->
+    <!-- si queremos renderizar lo malo que se ve solo una imgane pero por gustos-- poner div class="col-md-1" id="screens-section"-->
     <div class="row">
-        <div class="col-md-1" id="screens-section">
+        <div class="col-md-1" >
             <img class="img-fluid mini" *ngFor="let miniImg of screens; let i = index;"
             [src]="miniImg" alt="Screen {{ i }}"
             (click)="selectImgMain(i)"/>
             
           </div>
+          <!--para renderizar pero no aconsejable poner:::: img class="img-fluid main-img" [src]="selectImage" alt="screens-section"-->
       <div class="col-md-7">
         <!-- el  [src]="selectImage" significa src ={{selectImage}}  es lo mismo-->
-        <img class="img-fluid main-img" [src]="selectImage" alt="screens-section" />
+        <img class="img-fluid main-img" [src]="selectImage" alt="" />
       </div>
       <!-- añado el json para pruebas-->
      
